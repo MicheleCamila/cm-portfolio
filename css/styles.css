@@ -656,6 +656,7 @@ body.dark #home::before {
 .intellisecure-bg { background: linear-gradient(135deg, #e8f0ed 0%, #8ab5a8 100%); }
 .elaundry-bg   { background: linear-gradient(135deg, #f0f7f4 0%, #daeee7 100%); }
 .jambosec-bg   { background: linear-gradient(135deg, #f0f7f4 0%, #daeee7 100%); }
+.smartmarket-bg { background: linear-gradient(135deg, #f0f7f4 0%, #daeee7 100%); }
 
 .screen-label {
   font-family: 'DM Serif Display', serif;

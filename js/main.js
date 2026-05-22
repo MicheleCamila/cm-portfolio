@@ -158,6 +158,13 @@ SELECTED PROJECTS:
    assign workloads, and generate reports. The goal is to improve service efficiency, eliminate manual record-keeping, reduce revenue leakage,
    and create a transparent order history for every student.
 
+4. Smart Market — Your AI business companion
+    NYOTA  is offering business support to enable MSMESs to grow and create jobs. Smart Market is a mobile application that connects potential beneficiaries with local suppliers, customers, and business resources.
+    The app provides a platform for users to list products/services, access market information, network with other enterpreneurs.
+    Market intelligence means understanding your business environment what your customers want, 
+    what competitors are doing, how prices are shifting and the ongoing trends
+    Smart Market uses AI to automatically collect, analyze and interpret this data so that MSMES can make smarter, 
+    faster, impactful and more profitable decision. 
 AVAILABILITY: Open to internships, collaborations, and exciting new projects.
 `;
 

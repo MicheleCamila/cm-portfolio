@@ -44,7 +44,7 @@
           <img src="assets/cam.jpeg" alt="Camila Michele" class="w-full h-full object-cover" />
         </div>
         <div class="hidden sm:block">
-          <p class="text-xs uppercase tracking-[0.35em] text-sage-500">Camila Michele</p>
+          <p id="nav-name" class="text-xs uppercase tracking-[0.35em] text-sage-500">Camila Michele</p>
         </div>
       </a>
 
@@ -82,19 +82,19 @@
   <header id="home" class="min-h-screen flex items-center justify-center px-6 pt-28">
     <div class="hero-grid w-full max-w-6xl gap-12 lg:grid lg:grid-cols-[1.05fr_1fr] items-center">
       <div class="hero-panel hero-left text-left">
-        <p class="subheading text-sm font-medium tracking-widest text-sage-400 uppercase mb-4">
+        <p id="hero-role" class="subheading text-sm font-medium tracking-widest text-sage-400 uppercase mb-4">
           Mobile Developer · UI/UX Designer
         </p>
         <h5 class="pretitle font-serif text-3xl md:text-4xl text-sage-700 mb-4">
           Hi, I'm
         </h5>
-        <h1 class="hero-name font-serif text-6xl md:text-7xl text-sage-700 leading-tight mb-6">
+        <h1 id="hero-name" class="hero-name font-serif text-6xl md:text-7xl text-sage-700 leading-tight mb-6">
           CAMILA MICHELE
         </h1>
       </div>
 
       <div class="hero-panel hero-right text-left">
-        <p class="hero-copy text-sage-500 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+        <p id="hero-bio" class="hero-copy text-sage-500 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
           At my core, I'm someone who thrives at the intersection of curiosity and impact. I love learning,
           building, and asking how technology can serve people better. My passion is not just to innovate,
           but to empower community and create meaningful change.
@@ -121,13 +121,13 @@
       </div>
       <div>
         <p class="text-xs font-medium tracking-widest text-sage-400 uppercase mb-3">Profile</p>
-        <h2 class="font-serif text-3xl text-sage-700 mb-6">About Me</h2>
-        <p class="text-sage-500 leading-relaxed mb-4">
+        <h2 id="about-name" class="font-serif text-3xl text-sage-700 mb-6">About Me</h2>
+        <p id="about-bio" class="text-sage-500 leading-relaxed mb-4">
           I'm a tech student who enjoys shaping ideas into digital experiences that feel simple and useful.
           With hands-on skills in mobile development (Flutter, iOS, Android) and UI/UX design (Figma, wireframing, prototyping),
           I focus on building solutions that people actually enjoy using.
         </p>
-        <p class="text-sage-500 leading-relaxed">
+        <p id="about-bio-2" class="text-sage-500 leading-relaxed">
           I have had the chance to win hackathons, guide small teams and design applications
           that balance creativity with real-world impact. I'm open to opportunities across different sectors,
           always looking for ways to apply my skills to projects that make technology more accessible and meaningful.
@@ -142,7 +142,8 @@
       <p class="text-xs font-medium tracking-widest text-sage-400 uppercase mb-3 text-center">What I Do</p>
       <h2 class="font-serif text-3xl text-sage-700 mb-12 text-center">Technical Skills</h2>
 
-      <div class="grid md:grid-cols-2 gap-4">
+      <!-- filled dynamically by main.js from Supabase; static badges shown as fallback -->
+      <div id="skills-badges-container" class="grid md:grid-cols-2 gap-4">
         <div class="skill-badge">Mobile Development — Flutter, iOS, Android</div>
         <div class="skill-badge">Agile Leadership / Scrum Master</div>
         <div class="skill-badge">UI/UX Design — Figma, Wireframing, Design Systems</div>
@@ -176,12 +177,6 @@
       <p class="projects-eyebrow">What I've Built</p>
       <h2 class="projects-heading">Selected Projects</h2>
 
-      <!--
-        THIS is the only change from your original index.html.
-        The hardcoded <article> blocks are replaced by this single div.
-        main.js fetches projects from Supabase and renders them here.
-        If the API fails, a friendly message is shown instead.
-      -->
       <div id="projects-container">
         <!-- Loading state shown while fetch is in flight -->
         <div style="text-align:center; padding:60px 20px; color:#8ab5a8; font-size:14px;">
@@ -197,18 +192,20 @@
     <div class="max-w-2xl mx-auto text-center">
       <p class="text-xs font-medium tracking-widest text-sage-300 uppercase mb-3">Let's Connect</p>
       <h2 class="font-serif text-3xl mb-6">Get In Touch</h2>
-      <p class="text-sage-200 mb-10 leading-relaxed">
+      <p id="contact-bio" class="text-sage-200 mb-10 leading-relaxed">
         Open to internships, full time roles, collaborations, and exciting new projects. Let's build something great together.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="mailto:michelecamila100@gmail.com" class="bg-white text-sage-600 px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-100 transition-colors">Email Me</a>
-        <a href="https://github.com/MICHELECAMILA" target="_blank" class="border border-sage-400 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-500 transition-colors">GitHub</a>
-        <a href="https://linkedin.com/in/camila-michele" target="_blank" class="border border-sage-400 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-500 transition-colors">LinkedIn</a>
+        <a id="contact-email-link" href="mailto:michelecamila100@gmail.com" class="bg-white text-sage-600 px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-100 transition-colors">
+          <span id="contact-email-text">Email Me</span>
+        </a>
+        <a id="contact-github" href="https://github.com/MICHELECAMILA" target="_blank" class="border border-sage-400 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-500 transition-colors">GitHub</a>
+        <a id="contact-linkedin" href="https://linkedin.com/in/camila-michele" target="_blank" class="border border-sage-400 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-500 transition-colors">LinkedIn</a>
       </div>
       <div class="flex flex-wrap items-center gap-6 mb-10 mt-6 text-sage-100">
-        <p class="text-sm"><strong>Phone:</strong> +254 759 068 658</p>
+        <p class="text-sm"><strong>Phone:</strong> <span id="contact-phone">+254 759 068 658</span></p>
         <p class="text-sm"><span class="mr-2">📍</span>Nakuru, Kenya</p>
-        <p class="text-sm"><strong>Email:</strong> michelecamila100@gmail.com</p>
+        <p class="text-sm"><strong>Email:</strong> <span id="contact-email-display">michelecamila100@gmail.com</span></p>
       </div>
     </div>
   </section>
@@ -257,7 +254,7 @@
       </div>
 
       <div class="chat-input-row">
-        <textarea id="chat-input" placeholder="Ask about my experience..." rows="1"></textarea>
+        <textarea id="chat-input" placeholder="Ask about my experience..." rows="1" data-gramm="false" data-gramm_editor="false"></textarea>
         <button id="chat-send" aria-label="Send">
           <svg width="16" height="16" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"/>

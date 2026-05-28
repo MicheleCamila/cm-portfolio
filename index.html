@@ -4,14 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title> CM - Portfolio </title>
-
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind config  -->
   <script>
     tailwind.config = {
       theme: {
@@ -38,13 +32,11 @@
       }
     }
   </script>
-
-  <!-- Custom styles -->
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body class="bg-sage-50 font-sans text-sage-800">
 
-  <!-- NAV  -->
+  <!-- NAV -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-sage-50/90 backdrop-blur border-b border-sage-200">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
       <a href="#home" class="flex items-center gap-3">
@@ -86,7 +78,7 @@
     </div>
   </nav>
 
-  <!--  HERO  -->
+  <!-- HERO -->
   <header id="home" class="min-h-screen flex items-center justify-center px-6 pt-28">
     <div class="hero-grid w-full max-w-6xl gap-12 lg:grid lg:grid-cols-[1.05fr_1fr] items-center">
       <div class="hero-panel hero-left text-left">
@@ -103,8 +95,9 @@
 
       <div class="hero-panel hero-right text-left">
         <p class="hero-copy text-sage-500 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
-          At my core, I'm someone who thrives at the intersection of curiosity and impact. I love learning, building, and asking how technology can serve people better.
-          My passion is not just to innovate, but to empower community and create meaningful change.
+          At my core, I'm someone who thrives at the intersection of curiosity and impact. I love learning,
+          building, and asking how technology can serve people better. My passion is not just to innovate,
+          but to empower community and create meaningful change.
         </p>
         <div class="hero-cta flex flex-wrap gap-4">
           <a href="#projects" class="bg-sage-500 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-600 transition-colors">
@@ -116,37 +109,34 @@
         </div>
       </div>
     </div>
-
-  
   </header>
 
-  <!-- ABOUT  -->
+  <!-- ABOUT -->
   <section id="about" class="py-24 px-6 max-w-5xl mx-auto">
     <div class="grid md:grid-cols-2 gap-16 items-center">
-      
       <div class="flex justify-center">
         <div class="w-64 h-64 rounded-2xl bg-sage-200 flex items-center justify-center text-sage-400 text-sm border border-sage-300">
-         <img src="assets/cam.jpeg" alt="camila" class="w-64 h-64 rounded-2xl object-cover"> 
+          <img src="assets/cam.jpeg" alt="camila" class="w-64 h-64 rounded-2xl object-cover">
         </div>
       </div>
       <div>
         <p class="text-xs font-medium tracking-widest text-sage-400 uppercase mb-3">Profile</p>
         <h2 class="font-serif text-3xl text-sage-700 mb-6">About Me</h2>
         <p class="text-sage-500 leading-relaxed mb-4">
-          I’m a tech student who enjoys shaping ideas into digital experiences that feel simple and useful.
-           With hands-on skills in mobile development (Flutter, iOS, Android) and UI/UX design (Figma, wireframing, prototyping),
-            I focus on building solutions that people actually enjoy using
+          I'm a tech student who enjoys shaping ideas into digital experiences that feel simple and useful.
+          With hands-on skills in mobile development (Flutter, iOS, Android) and UI/UX design (Figma, wireframing, prototyping),
+          I focus on building solutions that people actually enjoy using.
         </p>
         <p class="text-sage-500 leading-relaxed">
-          I have had the chance to win hackathons, guide small teams and design applications 
-          that balance creativity with real-world impact. I’m open to opportunities across different sectors, 
+          I have had the chance to win hackathons, guide small teams and design applications
+          that balance creativity with real-world impact. I'm open to opportunities across different sectors,
           always looking for ways to apply my skills to projects that make technology more accessible and meaningful.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS  -->
+  <!-- SKILLS -->
   <section id="skills" class="py-24 px-6 bg-white">
     <div class="max-w-5xl mx-auto">
       <p class="text-xs font-medium tracking-widest text-sage-400 uppercase mb-3 text-center">What I Do</p>
@@ -158,247 +148,67 @@
         <div class="skill-badge">UI/UX Design — Figma, Wireframing, Design Systems</div>
         <div class="skill-badge">Agile Software Development</div>
         <div class="skill-badge">Frontend Development — HTML/CSS, Dart/Flutter</div>
-        <div class="skill-badge">Backend Development — Firebase, Supabase/PostgressSQL,Django</div>
+        <div class="skill-badge">Backend Development — Firebase, Supabase/PostgreSQL, Django</div>
       </div>
 
-      <h2 class="font-serif text-2xl text-sage-700 mt-16 mb-8 text-center">Tools & Technologies</h2>
+      <h2 class="font-serif text-2xl text-sage-700 mt-16 mb-8 text-center">Tools &amp; Technologies</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 justify-items-center">
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma logo" class="tool-logo" />
-          <span>Figma</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub logo" class="tool-logo" />
-          <span>GitHub</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL logo" class="tool-logo" />
-          <span>PostgreSQL</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux logo" class="tool-logo" />
-          <span>Linux</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS logo" class="tool-logo" />
-          <span>CSS</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code logo" class="tool-logo" />
-          <span>VS Code</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" alt="Apache logo" class="tool-logo" />
-          <span>Apache</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter logo" class="tool-logo" />
-          <span>Flutter</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML logo" class="tool-logo" />
-          <span>HTML</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart logo" class="tool-logo" />
-          <span>Dart</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" alt="Firebase logo" class="tool-logo" />
-          <span>Firebase</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase logo" class="tool-logo" />
-          <span>Supabase</span>
-        </div>
-        <div class="tool-card">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg" alt="Django logo" class="tool-logo" />
-          <span>Django</span>
-        </div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="tool-logo" /><span>Figma</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="tool-logo" /><span>GitHub</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="tool-logo" /><span>PostgreSQL</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" class="tool-logo" /><span>Linux</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="tool-logo" /><span>CSS</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="tool-logo" /><span>VS Code</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" alt="Apache" class="tool-logo" /><span>Apache</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" class="tool-logo" /><span>Flutter</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="tool-logo" /><span>HTML</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart" class="tool-logo" /><span>Dart</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" alt="Firebase" class="tool-logo" /><span>Firebase</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" class="tool-logo" /><span>Supabase</span></div>
+        <div class="tool-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg" alt="Django" class="tool-logo" /><span>Django</span></div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS  -->
+  <!-- PROJECTS — rendered dynamically by main.js from Supabase -->
   <section id="projects" class="projects-section">
     <div class="projects-inner">
       <p class="projects-eyebrow">What I've Built</p>
       <h2 class="projects-heading">Selected Projects</h2>
 
-      <!-- Project 1: EduEats — mockup LEFT, text RIGHT  -->
-      <article class="proj-row">
-        <div class="proj-mockup-wrap">
-          <div class="proj-mockup">
-            <div class="laptop-frame">
-              <div class="laptop-screen">
-                <div class="screen-placeholder EduEats-bg">
-                   <img src="assets/edueats.png" alt="EduEats screenshot" class="screen-image"> 
-                 
-                </div>
-              </div>
-              <div class="laptop-base"></div>
-              <div class="laptop-foot"></div>
-            </div>
-          </div>
+      <!--
+        THIS is the only change from your original index.html.
+        The hardcoded <article> blocks are replaced by this single div.
+        main.js fetches projects from Supabase and renders them here.
+        If the API fails, a friendly message is shown instead.
+      -->
+      <div id="projects-container">
+        <!-- Loading state shown while fetch is in flight -->
+        <div style="text-align:center; padding:60px 20px; color:#8ab5a8; font-size:14px;">
+          Loading projects…
         </div>
-        <div class="proj-info">
-          <span class="proj-type">Web Application</span>
-          <h3 class="proj-title">EduEats</h3>
-          <p class="proj-desc">
-            EduEats is a digital mess/cafeteria orderig and wallet system built specifically for Kenyan universities.
-            The system allows students to browse daily menus, manage a digital wallet, place meal orders, and track spending.
-             Mess staff and administrators are provided with tools to manage menus, monitor orders, confirm payments, and generate reports.
-          </p>
-        </div>
-      </article>
-
-      <!-- ── Project 2: IntelliSecure — text LEFT, mockup RIGHT ── -->
-      <article class="proj-row proj-row--reverse">
-        <div class="proj-mockup-wrap">
-          <div class="proj-mockup">
-            <div class="laptop-frame">
-              <div class="laptop-screen">
-                <div class="screen-placeholder intellisecure-bg">
-                   <img src="assets/intellisecure.jpeg" alt="IntelliSecure screenshot" class="screen-image"> 
-               
-                </div>
-              </div>
-              <div class="laptop-base"></div>
-              <div class="laptop-foot"></div>
-            </div>
-          </div>
-        </div>
-        <div class="proj-info">
-          <span class="proj-type">AI · Cybersecurity</span>
-          <h3 class="proj-title">
-            IntelliSecure :AI-Powered SMS Fraud Detection System
-            <span class="proj-award">🏆 Hackathon Winner</span>
-          </h3>
-          <p class="proj-desc">
-            SMS fraud and mobile money scams are exploding across Kenya and East Africa, targeting unsuspecting mobile users daily.
-             Traditional security measures can't keep pace with evolving fraud tactics.IntelliSecure leverages AI to analyze SMS messages in real-time, 
-             detecting fraudulent patterns before users fall victim.The system learns continuously from user feedback, adapting to new threats instantly.
-          </p>
-          <p class="proj-achievement">3rd overall · 1st Cybersecurity — Inter University Hackathon 2025</p>
-        </div>
-      </article>
-
-      <!-- Project 3: E-laundry — mockup LEFT, text RIGHT  -->
-      <article class="proj-row">
-        <div class="proj-mockup-wrap">
-          <div class="proj-mockup">
-            <div class="laptop-frame">
-              <div class="laptop-screen">
-                <div class="screen-placeholder smartmarket-bg">
-                  <img src="assets/elaudry.png" alt="Smart Market screenshot" class="screen-image"> 
-                  
-                </div>
-              </div>
-              <div class="laptop-base"></div>
-              <div class="laptop-foot"></div>
-            </div>
-          </div>
-        </div>
-        <div class="proj-info">
-          <span class="proj-type">Web Application</span>
-          <h3 class="proj-title">E-Laundry</h3>
-          <p class="proj-desc">
-            A web-based platform that streamlines the laundry order and management process at Egerton University. 
-            The platform enables students to submit and track laundry orders online while giving management staff a dashboard to process orders,
-            assign workloads, and generate reports. The goal is to improve service efficiency, eliminate manual record-keeping, reduce revenue leakage,
-            and create a transparent order history for every student.
-          </p>
-        </div>
-      </article>
-
-        <!--  Project 4: JamboSec — text LEFT, mockup RIGHT  -->
-      <article class="proj-row proj-row--reverse">
-        <div class="proj-mockup-wrap">
-          <div class="proj-mockup">
-            <div class="laptop-frame">
-              <div class="laptop-screen">
-                <div class="screen-placeholder intellisecure-bg">
-                   <img src="assets/jambosec.png" alt="JamboSec screenshot" class="screen-image"> 
-               
-                </div>
-              </div>
-              <div class="laptop-base"></div>
-              <div class="laptop-foot"></div>
-            </div>
-          </div>
-        </div>
-        <div class="proj-info">
-          <span class="proj-type">AI · Cybersecurity</span>
-          <h3 class="proj-title">
-            JamboSec: AI-Powered Cybersecurity Awareness Assistant
-          </h3>
-          <p class="proj-desc">
-            JamboSec is an English-Swahili AI cybersecurity awareness assistant built to empower 
-            ordinary Kenyans with the knowledge and tools to stay safe online.
-          </p>
-        </div>
-      </article>
-
-        <!-- Project 3: smart market — mockup LEFT, text RIGHT  -->
-      <article class="proj-row">
-        <div class="proj-mockup-wrap">
-          <div class="proj-mockup">
-            <div class="laptop-frame">
-              <div class="laptop-screen">
-                <div class="screen-placeholder smartmarket-bg">
-                  <img src="assets/smartmarket.jpeg" alt="Smart Market screenshot" class="screen-image"> 
-                  
-                </div>
-              </div>
-              <div class="laptop-base"></div>
-              <div class="laptop-foot"></div>
-            </div>
-          </div>
-        </div>
-        <div class="proj-info">
-          <span class="proj-type">mobile Application</span>
-          <h3 class="proj-title">Smart Market - your AI business companion </h3>
-          <p class="proj-desc">
-           Currently the Government of Kenya has an ongoing project known as NYOTA, 
-           a project that is meant to absorb youths between the age 18-29 with education level of Form four and below (inclusive of dropouts).
-           NYOTA  is offering business support to enable MSMESs to grow and create jobs. Smart Market is a mobile application that connects potential beneficiaries with local suppliers, customers, and business resources.
-           The app provides a platform for users to list products/services, access market information, network with other enterpreneurs.
-           Market intelligence means understanding your business environment what your customers want, 
-           what competitors are doing, how prices are shifting and the ongoing trends
-           Smart Market uses AI to automatically collect, analyze and interpret this data so that MSMES can make smarter, 
-           faster, impactful and more profitable decision. 
-          </p>
-        </div>
-      </article>
+      </div>
 
     </div>
   </section>
 
-
-  <!--  CONTACT  -->
+  <!-- CONTACT -->
   <section id="contact" class="py-24 px-6 bg-sage-600 text-white">
     <div class="max-w-2xl mx-auto text-center">
       <p class="text-xs font-medium tracking-widest text-sage-300 uppercase mb-3">Let's Connect</p>
       <h2 class="font-serif text-3xl mb-6">Get In Touch</h2>
       <p class="text-sage-200 mb-10 leading-relaxed">
-        Open to internships , full time roles , collaborations , and exciting new projects. Let's build something great together.
+        Open to internships, full time roles, collaborations, and exciting new projects. Let's build something great together.
       </p>
-      
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="mailto:michelecamila100@gmail.com" class="bg-white text-sage-600 px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-100 transition-colors">
-          Email Me
-        </a>
-        <a href="https://github.com/MICHELECAMILA" target="_blank" class="border border-sage-400 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-500 transition-colors">
-          GitHub
-        </a>
-        <a href="https://linkedin.com/in/camila-michele" target="_blank" class="border border-sage-400 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-500 transition-colors">
-          LinkedIn
-        </a>
+        <a href="mailto:michelecamila100@gmail.com" class="bg-white text-sage-600 px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-100 transition-colors">Email Me</a>
+        <a href="https://github.com/MICHELECAMILA" target="_blank" class="border border-sage-400 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-500 transition-colors">GitHub</a>
+        <a href="https://linkedin.com/in/camila-michele" target="_blank" class="border border-sage-400 text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage-500 transition-colors">LinkedIn</a>
       </div>
       <div class="flex flex-wrap items-center gap-6 mb-10 mt-6 text-sage-100">
-        <p class="text-sm"><strong>Phone :</strong> +254 759 068 658</p>
-       <p class="text-sm"><span class="mr-2">📍</span>Nakuru, Kenya</p>
-        <p class="text-sm"><strong>Email :</strong> michelecamila100@gmail.com</p>
+        <p class="text-sm"><strong>Phone:</strong> +254 759 068 658</p>
+        <p class="text-sm"><span class="mr-2">📍</span>Nakuru, Kenya</p>
+        <p class="text-sm"><strong>Email:</strong> michelecamila100@gmail.com</p>
       </div>
     </div>
   </section>
@@ -408,8 +218,7 @@
     <p>Built by <span class="text-sage-600 font-medium">Camila Michele</span> · All rights reserved (2026)</p>
   </footer>
 
-  <!--  CHAT WIDGET  -->
-  <!-- Floating button -->
+  <!-- CHAT WIDGET -->
   <button id="chat-bubble" aria-label="Chat with my CV">
     <svg class="icon-chat" width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -420,7 +229,6 @@
     </svg>
   </button>
 
-  <!-- Chat panel -->
   <div id="chat-panel" role="dialog" aria-label="Chat with my CV">
     <div class="chat-header">
       <div class="chat-avatar">🧑‍💻</div>
@@ -431,10 +239,8 @@
       <div class="online-dot"></div>
     </div>
 
-    <!-- API key prompt hidden — OpenAI key is set directly in main.js -->
     <div id="api-key-prompt" style="display:none"></div>
 
-    <!-- Step 2: Chat UI (hidden until API key entered) -->
     <div id="chat-ui" style="display:none; flex-direction:column; flex:1">
       <div id="chat-messages">
         <div class="msg bot">
@@ -463,8 +269,6 @@
     </div>
   </div>
 
-  <!-- JS (loaded last so DOM is ready) -->
   <script src="js/main.js"></script>
-
 </body>
 </html>

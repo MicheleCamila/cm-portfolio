@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard — Camila Michele Portfolio</title>
   <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -42,18 +43,18 @@
   </div>
   <div class="sidebar-nav">
     <span class="nav-section-label">Overview</span>
-    <button class="nav-btn active" onclick="showPanel('overview',this)">⬡ Overview</button>
+    <button class="nav-btn active" onclick="showPanel('overview',this)"><i class="fas fa-home"></i> Overview</button>
     <span class="nav-section-label">Content</span>
-    <button class="nav-btn" onclick="showPanel('profile',this)">◉ Profile</button>
-    <button class="nav-btn" onclick="showPanel('skills',this)">◇ Skills</button>
-    <button class="nav-btn" onclick="showPanel('projects',this)">◈ Projects</button>
-    <button class="nav-btn" onclick="showPanel('cv-context',this)">◎ CV &amp; Chat Context</button>
+    <button class="nav-btn" onclick="showPanel('profile',this)"><i class="fas fa-user"></i> Profile</button>
+    <button class="nav-btn" onclick="showPanel('skills',this)"><i class="fas fa-star"></i> Skills</button>
+    <button class="nav-btn" onclick="showPanel('projects',this)"><i class="fas fa-folder"></i> Projects</button>
+    <button class="nav-btn" onclick="showPanel('cv-context',this)"><i class="fas fa-comment"></i> CV & Chat Context</button>
     <span class="nav-section-label">System</span>
-    <button class="nav-btn" onclick="showPanel('settings',this)">◌ Settings</button>
+    <button class="nav-btn" onclick="showPanel('settings',this)"><i class="fas fa-cog"></i> Settings</button>
   </div>
   <div class="sidebar-footer">
     <a href="index.html" target="_blank">↗ View Portfolio</a>
-    <button class="nav-btn logout-btn" onclick="logout()">⏻ Log Out</button>
+   <button class="nav-btn logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log Out</button>
   </div>
 </nav>
 
@@ -117,13 +118,6 @@
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header"><h3>Data Flow</h3></div>
-        <div class="card-body data-flow-body">
-          Dashboard → <code>/api/data</code> → Supabase → <code>/api/data</code> → index.html (fetches on every page load)
-          <br>All changes reflect live on your deployed site — no redeployment needed.
         </div>
       </div>
     </div>
@@ -222,9 +216,6 @@
           </div>
         </div>
       </div>
-      <div class="info-box">
-        <p>Skills are saved as part of your CV context and feed the AI chat widget. Click the <strong>✕</strong> on any skill to remove it, then hit <strong>Save Skills</strong>.</p>
-      </div>
     </div>
 
     <!-- PROJECTS -->
@@ -297,9 +288,6 @@
           </div>
         </div>
       </div>
-      <div class="info-box cv-info-box">
-        <p><strong class="info-box-label">How it works:</strong> Saving here writes to Supabase. Your live <code>index.html</code> fetches the CV context from <code>/api/data?action=get_cv</code> on every page load. No redeployment needed.</p>
-      </div>
     </div>
 
     <!-- SETTINGS -->
@@ -326,9 +314,6 @@
                 <input type="text" id="s-temp" value="0.7" class="input-narrower" />
               </li>
             </ul>
-            <div class="settings-note">
-              <p>Set <code>OPENAI_API_KEY</code>, <code>SUPABASE_URL</code>, and <code>SUPABASE_SERVICE_KEY</code> in Vercel → Settings → Environment Variables.</p>
-            </div>
           </div>
         </div>
         <div class="card">
@@ -339,9 +324,7 @@
               <div class="env-var">OPENAI_API_KEY = sk-...</div>
               <div class="env-var">SUPABASE_URL = https://xxxx.supabase.co</div>
               <div class="env-var">SUPABASE_SERVICE_KEY = eyJh...</div>
-            </div>
-            <p class="env-note">Get <code>SUPABASE_SERVICE_KEY</code> from Supabase → Project Settings → API → service_role (secret).</p>
-          </div>
+           
         </div>
       </div>
       <!-- Change Password -->

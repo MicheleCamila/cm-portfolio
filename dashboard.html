@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Camila Michele Portfolio</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+<!-- LOGIN / FIRST-TIME SETUP SCREEN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">CM</div>
+    <h1 class="login-title">Dashboard</h1>
+    <p class="login-sub">Camila Michele · Portfolio Control Center</p>
+    <div id="login-setup-banner" class="login-setup-note" style="display:none;">
+      👋 First time here. Set a password to protect your dashboard — it will be saved securely to Supabase.
+    </div>
+    <div class="login-field" id="login-field-current" style="display:none;">
+      <label class="login-label" for="login-current">Current Password</label>
+      <input type="password" id="login-current" class="login-input" placeholder="Enter current password" autocomplete="current-password" />
+    </div>
+    <div class="login-field">
+      <label class="login-label" for="login-password" id="login-password-label">Password</label>
+      <input type="password" id="login-password" class="login-input" placeholder="Enter password" autocomplete="current-password" />
+    </div>
+    <div class="login-field" id="login-field-confirm" style="display:none;">
+      <label class="login-label" for="login-confirm">Confirm Password</label>
+      <input type="password" id="login-confirm" class="login-input" placeholder="Confirm your password" autocomplete="new-password" />
+    </div>
+    <p id="login-error" class="login-error"></p>
+    <button class="login-btn" id="login-btn" onclick="submitLogin()">Unlock Dashboard →</button>
+    <p class="login-note" id="login-note">Session is remembered until you close this tab.</p>
+  </div>
+</div>
+
+<nav id="sidebar">
+  <div class="sidebar-brand">
+    <h1>CM Dashboard</h1>
+    <p>Control Center</p>
+  </div>
+  <div class="sidebar-nav">
+    <span class="nav-section-label">Overview</span>
+    <button class="nav-btn active" onclick="showPanel('overview',this)">⬡ Overview</button>
+    <span class="nav-section-label">Content</span>
+    <button class="nav-btn" onclick="showPanel('profile',this)">◉ Profile</button>
+    <button class="nav-btn" onclick="showPanel('skills',this)">◇ Skills</button>
+    <button class="nav-btn" onclick="showPanel('projects',this)">◈ Projects</button>
+    <button class="nav-btn" onclick="showPanel('cv-context',this)">◎ CV &amp; Chat Context</button>
+    <span class="nav-section-label">System</span>
+    <button class="nav-btn" onclick="showPanel('settings',this)">◌ Settings</button>
+  </div>
+  <div class="sidebar-footer">
+    <a href="index.html" target="_blank">↗ View Portfolio</a>
+    <button class="nav-btn logout-btn" onclick="logout()">⏻ Log Out</button>
+  </div>
+</nav>
+
+<div id="main">
+  <header id="topbar">
+    <div class="topbar-left">
+      <button id="menu-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')" aria-label="menu">☰</button>
+      <h2 id="panel-title">Overview</h2>
+    </div>
+    <div class="topbar-right">
+      <span id="api-status" class="badge-live">Connecting…</span>
+      <a href="index.html" target="_blank" class="preview-link">↗ preview</a>
+    </div>
+  </header>
+
+  <div id="content">
+
+    <!-- OVERVIEW -->
+    <div id="panel-overview" class="panel active">
+      <div id="overview-loader" class="loading-bar"></div>
+      <div id="overview-error" class="error-banner"></div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Projects</div>
+          <div class="stat-value" id="stat-projects">—</div>
+          <div class="stat-sub">in Supabase</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Skills</div>
+          <div class="stat-value" id="stat-skills">—</div>
+          <div class="stat-sub">listed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Hackathon Wins</div>
+          <div class="stat-value">2</div>
+          <div class="stat-sub">Awards earned</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Data Layer</div>
+          <div class="stat-value stat-value--sm">Supabase</div>
+          <div class="stat-sub">Live &amp; synced</div>
+        </div>
+      </div>
+      <div class="overview-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3>Projects at a Glance</h3>
+            <button class="btn btn-sm btn-ghost" onclick="showPanel('projects',document.querySelectorAll('.nav-btn')[3])">Manage</button>
+          </div>
+          <div class="card-body" id="overview-projects-list">
+            <p class="loading-text">Loading…</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3>Recent Activity</h3></div>
+          <div class="card-body">
+            <ul class="activity-list" id="activity-list">
+              <li>
+                <div class="activity-dot green"></div>
+                <div><div>Dashboard loaded</div><div class="activity-time">Just now</div></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Data Flow</h3></div>
+        <div class="card-body data-flow-body">
+          Dashboard → <code>/api/data</code> → Supabase → <code>/api/data</code> → index.html (fetches on every page load)
+          <br>All changes reflect live on your deployed site — no redeployment needed.
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div id="panel-profile" class="panel">
+      <div id="profile-loader" class="loading-bar done"></div>
+      <div id="profile-error" class="error-banner"></div>
+      <div class="panel-toolbar">
+        <p class="panel-hint">Your public profile information shown on the portfolio.</p>
+        <div class="btn-group">
+          <button class="btn btn-ghost btn-sm" onclick="loadProfile()">↺ Refresh</button>
+          <button class="btn btn-primary" id="profile-save-btn" onclick="saveProfile()">Save Changes</button>
+        </div>
+      </div>
+      <div class="profile-layout">
+        <!-- Left: avatar card -->
+        <div class="profile-card">
+          <div class="profile-avatar" id="profile-avatar-initials">CM</div>
+          <div class="profile-name" id="profile-preview-name">Camila Michele</div>
+          <div class="profile-role" id="profile-preview-role">Mobile Developer · UI/UX Designer</div>
+          <div class="profile-divider"></div>
+          <div class="profile-stats">
+            <div>
+              <div class="profile-stat-val" id="profile-stat-projects">—</div>
+              <div class="profile-stat-label">Projects</div>
+            </div>
+            <div>
+              <div class="profile-stat-val" id="profile-stat-skills">—</div>
+              <div class="profile-stat-label">Skills</div>
+            </div>
+          </div>
+        </div>
+        <!-- Right: edit form -->
+        <div class="card">
+          <div class="card-header"><h3>Profile Information</h3></div>
+          <div class="card-body">
+            <div class="form-row-2">
+              <div>
+                <label class="field-label">Full Name</label>
+                <input type="text" id="profile-name" placeholder="Camila Michele" oninput="updateProfilePreview()" />
+              </div>
+              <div>
+                <label class="field-label">Email</label>
+                <input type="email" id="profile-email" placeholder="you@example.com" />
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="field-label">Role / Title</label>
+              <input type="text" id="profile-role" placeholder="Mobile Developer · UI/UX Designer" oninput="updateProfilePreview()" />
+            </div>
+            <div class="form-row">
+              <label class="field-label">Bio</label>
+              <textarea id="profile-bio" rows="4" placeholder="A short bio shown on your portfolio…"></textarea>
+            </div>
+            <div class="form-row-2">
+              <div>
+                <label class="field-label">GitHub URL</label>
+                <input type="url" id="profile-github" placeholder="https://github.com/…" />
+              </div>
+              <div>
+                <label class="field-label">LinkedIn URL</label>
+                <input type="url" id="profile-linkedin" placeholder="https://linkedin.com/in/…" />
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="field-label">Phone</label>
+              <input type="text" id="profile-phone" placeholder="+254 …" />
+            </div>
+            <div class="form-row">
+              <label class="field-label">Availability Note</label>
+              <input type="text" id="profile-availability" placeholder="Open to internships and collaborations" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div id="panel-skills" class="panel">
+      <div id="skills-loader" class="loading-bar done"></div>
+      <div id="skills-error" class="error-banner"></div>
+      <div class="panel-toolbar">
+        <p class="panel-hint">Skills shown on your portfolio and used by the AI chat widget.</p>
+        <button class="btn btn-primary" id="skills-save-btn" onclick="saveSkills()">Save Skills</button>
+      </div>
+      <div class="card card-spaced">
+        <div class="card-header"><h3>Your Skills</h3></div>
+        <div class="card-body">
+          <div class="skills-grid" id="skills-grid">
+            <p class="loading-text">Loading…</p>
+          </div>
+          <div class="skill-add-row">
+            <input type="text" id="skill-input" placeholder="Add a skill e.g. Flutter" />
+            <button class="btn btn-primary" onclick="addSkillTag()">+ Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <p>Skills are saved as part of your CV context and feed the AI chat widget. Click the <strong>✕</strong> on any skill to remove it, then hit <strong>Save Skills</strong>.</p>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div id="panel-projects" class="panel">
+      <div id="projects-loader" class="loading-bar done"></div>
+      <div id="projects-error" class="error-banner"></div>
+      <div class="panel-toolbar">
+        <p class="panel-hint">Changes save to Supabase and reflect on your live portfolio immediately.</p>
+        <button class="btn btn-primary" onclick="openProjectModal()">+ Add Project</button>
+      </div>
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Project</th><th>Type</th><th>Status</th><th>Award</th><th class="col-actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="projects-tbody">
+            <tr><td colspan="5"><div class="empty-state"><div class="icon">◈</div><p>Loading…</p></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CV CONTEXT -->
+    <div id="panel-cv-context" class="panel">
+      <div id="cv-loader" class="loading-bar done"></div>
+      <div id="cv-error" class="error-banner"></div>
+      <div class="panel-toolbar">
+        <p class="panel-hint">This feeds the AI chat widget on your live site. Save to update instantly.</p>
+        <div class="btn-group">
+          <button class="btn btn-ghost btn-sm" onclick="loadCv()">↺ Refresh</button>
+          <button class="btn btn-primary" id="cv-save-btn" onclick="saveCv()">Save to Supabase</button>
+        </div>
+      </div>
+      <div class="cv-field-group">
+        <div class="cv-field-header" onclick="toggleSection(this)">
+          <h4>▶ Profile &amp; Role Target</h4>
+          <span class="cv-field-hint">click to expand</span>
+        </div>
+        <div class="cv-field-body">
+          <div class="form-row"><label class="field-label">Full Name</label><input type="text" id="cv-name" /></div>
+          <div class="form-row"><label class="field-label">Role Target</label><input type="text" id="cv-role" /></div>
+          <div class="form-row"><label class="field-label">Profile Summary</label><textarea id="cv-profile" rows="4"></textarea></div>
+        </div>
+      </div>
+      <div class="cv-field-group">
+        <div class="cv-field-header" onclick="toggleSection(this)">
+          <h4>▶ Technical Skills</h4>
+          <span class="cv-field-hint">click to expand</span>
+        </div>
+        <div class="cv-field-body">
+          <div class="form-row"><label class="field-label">Skills (one per line)</label><textarea id="cv-skills" rows="8"></textarea></div>
+        </div>
+      </div>
+      <div class="cv-field-group">
+        <div class="cv-field-header" onclick="toggleSection(this)">
+          <h4>▶ Contact &amp; Links</h4>
+          <span class="cv-field-hint">click to expand</span>
+        </div>
+        <div class="cv-field-body">
+          <div class="form-row-2">
+            <div><label class="field-label">Email</label><input type="email" id="cv-email" /></div>
+            <div><label class="field-label">Phone</label><input type="text" id="cv-phone" /></div>
+          </div>
+          <div class="form-row"><label class="field-label">Availability Note</label><input type="text" id="cv-availability" /></div>
+          <div class="form-row-2">
+            <div><label class="field-label">GitHub URL</label><input type="url" id="cv-github" /></div>
+            <div><label class="field-label">LinkedIn URL</label><input type="url" id="cv-linkedin" /></div>
+          </div>
+        </div>
+      </div>
+      <div class="info-box cv-info-box">
+        <p><strong class="info-box-label">How it works:</strong> Saving here writes to Supabase. Your live <code>index.html</code> fetches the CV context from <code>/api/data?action=get_cv</code> on every page load. No redeployment needed.</p>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="panel-settings" class="panel">
+      <div class="settings-2col">
+        <div class="card">
+          <div class="card-header"><h3>API Configuration</h3></div>
+          <div class="card-body">
+            <ul class="settings-list">
+              <li>
+                <div class="setting-info"><h4>OpenAI Model</h4><p>Used by the chat widget</p></div>
+                <select id="s-model" class="select-inline">
+                  <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                  <option value="gpt-4o-mini">gpt-4o-mini</option>
+                  <option value="gpt-4o">gpt-4o</option>
+                </select>
+              </li>
+              <li>
+                <div class="setting-info"><h4>Max Tokens</h4><p>Response length</p></div>
+                <input type="text" id="s-tokens" value="300" class="input-narrow" />
+              </li>
+              <li>
+                <div class="setting-info"><h4>Temperature</h4><p>AI creativity (0–1)</p></div>
+                <input type="text" id="s-temp" value="0.7" class="input-narrower" />
+              </li>
+            </ul>
+            <div class="settings-note">
+              <p>Set <code>OPENAI_API_KEY</code>, <code>SUPABASE_URL</code>, and <code>SUPABASE_SERVICE_KEY</code> in Vercel → Settings → Environment Variables.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3>Required Env Vars</h3></div>
+          <div class="card-body">
+            <p class="env-intro">Add these in Vercel → Settings → Environment Variables:</p>
+            <div class="env-list">
+              <div class="env-var">OPENAI_API_KEY = sk-...</div>
+              <div class="env-var">SUPABASE_URL = https://xxxx.supabase.co</div>
+              <div class="env-var">SUPABASE_SERVICE_KEY = eyJh...</div>
+            </div>
+            <p class="env-note">Get <code>SUPABASE_SERVICE_KEY</code> from Supabase → Project Settings → API → service_role (secret).</p>
+          </div>
+        </div>
+      </div>
+      <!-- Change Password -->
+      <div class="card card-spaced">
+        <div class="card-header"><h3>Change Dashboard Password</h3></div>
+        <div class="card-body">
+          <div class="password-form">
+            <div>
+              <label class="field-label">Current Password</label>
+              <input type="password" id="pw-current" placeholder="Enter current password" />
+            </div>
+            <div>
+              <label class="field-label">New Password</label>
+              <input type="password" id="pw-new" placeholder="At least 8 characters" />
+            </div>
+            <div>
+              <label class="field-label">Confirm New Password</label>
+              <input type="password" id="pw-confirm" placeholder="Repeat new password" />
+            </div>
+            <button class="btn btn-primary btn-self-start" onclick="changePassword()">Update Password</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Diagnostics</h3></div>
+        <div class="card-body diagnostics-body">
+          <button class="btn btn-ghost btn-sm" onclick="testConnection()">Test API Connection</button>
+          <button class="btn btn-ghost btn-sm" onclick="refreshAll()">↺ Refresh All Data</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PROJECT MODAL -->
+<div id="modal-backdrop">
+  <div id="modal">
+    <div class="modal-header">
+      <h3 id="modal-title">Add Project</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="modal-project-id" />
+      <div class="form-row"><label class="field-label">Project Name *</label><input type="text" id="modal-name" /></div>
+      <div class="form-row-2">
+        <div>
+          <label class="field-label">Type</label>
+          <select id="modal-type">
+            <option>Web Application</option>
+            <option>Mobile Application</option>
+            <option>AI</option>
+            <option>AI · Cybersecurity</option>
+            <option>Design</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label">Status</label>
+          <select id="modal-status">
+            <option>Live</option>
+            <option>In Progress</option>
+            <option>Prototype</option>
+            <option>Archived</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row"><label class="field-label">Description</label><textarea id="modal-desc" rows="4"></textarea></div>
+      <div class="form-row-2">
+        <div><label class="field-label">Tech Stack</label><input type="text" id="modal-stack" placeholder="Flutter, Firebase" /></div>
+        <div><label class="field-label">Award (optional)</label><input type="text" id="modal-award" placeholder="🏆 Hackathon Winner" /></div>
+      </div>
+      <div class="form-row"><label class="field-label">Project Link (optional)</label><input type="url" id="modal-link" placeholder="https://github.com/…" /></div>
+      <div class="form-actions">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" id="modal-save-btn" onclick="saveProject()">Save Project</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+<script src="dashboard.js"></script>
+</body>
+</html>

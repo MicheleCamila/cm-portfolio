@@ -370,6 +370,31 @@
     </div>
     <div class="modal-body">
       <input type="hidden" id="modal-project-id" />
+      
+      <!-- Screenshot upload -->
+      <div class="form-row">
+        <label class="field-label">Project Screenshot</label>
+        <div class="image-upload-area" id="upload-area"
+             onclick="document.getElementById('modal-image-file').click()">
+          <div class="upload-icon"><i class="fas fa-image"></i></div>
+          <p>Click to upload a screenshot</p>
+          <small>PNG, JPG, WebP · max 5 MB</small>
+        </div>
+        <input type="file" id="modal-image-file"
+               accept="image/png,image/jpeg,image/webp,image/gif"
+               style="display:none"
+               onchange="handleImageSelect(event)" />
+        <div class="image-preview-wrap" id="image-preview-wrap">
+          <img id="image-preview" src="" alt="Screenshot preview" />
+          <button class="image-preview-remove" onclick="removeImage()" title="Remove">✕</button>
+        </div>
+        <div class="upload-progress" id="upload-progress">
+          <i class="fas fa-spinner fa-spin"></i> Uploading…
+        </div>
+        <div class="upload-error" id="upload-error"></div>
+        <input type="hidden" id="modal-image-url" />
+      </div>
+ 
       <div class="form-row"><label class="field-label">Project Name *</label><input type="text" id="modal-name" /></div>
       <div class="form-row-2">
         <div>

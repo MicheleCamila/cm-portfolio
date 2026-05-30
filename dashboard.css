@@ -672,3 +672,64 @@ tr:hover td      { background: var(--sage-50); }
 /* Spacing utility */
 .card-spaced     { margin-bottom: 18px; }
 .btn-self-start  { align-self: flex-start; }
+
+/* 
+   IMAGE UPLOAD — Project modal
+ */
+ 
+.image-upload-area {
+  border: 2px dashed var(--sage-200);
+  border-radius: 8px;
+  padding: 22px 16px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--sage-50);
+  transition: border-color 0.2s, background 0.2s;
+}
+.image-upload-area:hover { border-color: var(--sage-400); background: white; }
+.image-upload-area .upload-icon { font-size: 26px; color: var(--sage-300); margin-bottom: 6px; }
+.image-upload-area p     { font-size: 13px; color: var(--sage-400); margin: 0; line-height: 1.5; }
+.image-upload-area small { font-size: 11px; color: var(--sage-300); }
+ 
+.image-preview-wrap {
+  display: none;
+  position: relative;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid var(--sage-200);
+}
+.image-preview-wrap img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+.image-preview-remove {
+  position: absolute; top: 7px; right: 7px;
+  background: rgba(192,57,43,0.88);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 26px; height: 26px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.image-preview-remove:hover { background: #c0392b; }
+ 
+.upload-progress {
+  display: none;
+  font-size: 12px;
+  color: var(--sage-400);
+  text-align: center;
+  margin-top: 6px;
+}
+.upload-progress.show { display: block; }
+ 
+.upload-error {
+  display: none;
+  font-size: 12px;
+  color: #c0392b;
+  margin-top: 4px;
+}
+.upload-error.show { display: block; }

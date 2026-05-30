@@ -397,7 +397,16 @@ function renderProjects() {
     return;
   }
   tbody.innerHTML = projects.map(p => `
-    <tr>
+   <tr>
+      <td>
+        ${p.image_url
+          ? `<img src="${esc(p.image_url)}" alt="${esc(p.name)}"
+                  style="width:56px;height:40px;object-fit:cover;border-radius:5px;border:1px solid var(--sage-100);">`
+          : `<div style="width:56px;height:40px;border-radius:5px;background:var(--sage-100);
+                         display:flex;align-items:center;justify-content:center;font-size:18px;
+                         color:var(--sage-300);">🖼</div>`
+        }
+      </td>
       <td>
         <strong>${esc(p.name)}</strong>
         ${p.stack ? '<br><span class="project-stack">' + esc(p.stack) + '</span>' : ''}
@@ -407,7 +416,8 @@ function renderProjects() {
       <td>${p.award ? '<span class="tag tag-award">' + esc(p.award) + '</span>' : '<span class="no-award">—</span>'}</td>
       <td class="col-actions">
         <button class="btn btn-ghost btn-sm" onclick="openProjectModal('${p.id}')">Edit</button>
-        <button class="btn btn-danger btn-sm" onclick="deleteProject('${p.id}','${esc(p.name)}')" style="margin-left:4px;">Delete</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteProject('${p.id}','${esc(p.name)}')"
+                style="margin-left:4px;">Delete</button>
       </td>
     </tr>`).join('');
 }
@@ -424,6 +434,64 @@ function renderOverview() {
     (projects.length > 6 ? `<p class="overview-more">+${projects.length - 6} more</p>` : '');
 }
 
+async function handleImageSelect(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const allowed = ['image/png', 'image/jpeg', 'image/webp', 'image/gif'];
+  if (!allowed.includes(file.type)) { showUploadError('Only PNG, JPG, WebP or GIF allowed.'); return; }
+  if (file.size > 5 * 1024 * 1024) { showUploadError('Image must be under 5 MB.'); return; }
+  hideUploadError();
+  showUploadProgress(true);
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    const res  = await fetch('/api/upload', { method: 'POST', body: formData });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Upload failed');
+    document.getElementById('modal-image-url').value = data.url;
+    showImagePreview(data.url);
+    showUploadProgress(false);
+  } catch (err) {
+    showUploadProgress(false);
+    showUploadError('Upload failed: ' + err.message);
+  }
+  event.target.value = '';
+}
+ 
+function showImagePreview(url) {
+  document.getElementById('upload-area').style.display        = 'none';
+  document.getElementById('image-preview').src                = url;
+  document.getElementById('image-preview-wrap').style.display = 'block';
+}
+ 
+function removeImage() {
+  document.getElementById('modal-image-url').value            = '';
+  document.getElementById('image-preview').src                = '';
+  document.getElementById('image-preview-wrap').style.display = 'none';
+  document.getElementById('upload-area').style.display        = 'block';
+  document.getElementById('modal-image-file').value           = '';
+  hideUploadError();
+}
+ 
+function showUploadProgress(show) { document.getElementById('upload-progress').classList.toggle('show', show); }
+function showUploadError(msg) { const el = document.getElementById('upload-error'); el.textContent = msg; el.classList.add('show'); }
+function hideUploadError() { document.getElementById('upload-error').classList.remove('show'); }
+ 
+function resetImageUpload(existingUrl) {
+  hideUploadError();
+  showUploadProgress(false);
+  document.getElementById('modal-image-file').value = '';
+  if (existingUrl) {
+    document.getElementById('modal-image-url').value = existingUrl;
+    showImagePreview(existingUrl);
+  } else {
+    document.getElementById('modal-image-url').value            = '';
+    document.getElementById('image-preview').src                = '';
+    document.getElementById('image-preview-wrap').style.display = 'none';
+    document.getElementById('upload-area').style.display        = 'block';
+  }
+}
+
 function openProjectModal(id) {
   editingId = id || null;
   document.getElementById('modal-title').textContent = id ? 'Edit Project' : 'Add Project';
@@ -437,6 +505,7 @@ function openProjectModal(id) {
     document.getElementById('modal-stack').value  = p.stack;
     document.getElementById('modal-award').value  = p.award;
     document.getElementById('modal-link').value   = p.link || '';
+    resetImageUpload(p.image_url || '');
   } else {
     ['modal-name','modal-desc','modal-stack','modal-award','modal-link']
       .forEach(f => document.getElementById(f).value = '');
@@ -459,6 +528,7 @@ async function saveProject() {
     stack:       document.getElementById('modal-stack').value.trim(),
     award:       document.getElementById('modal-award').value.trim(),
     link:        document.getElementById('modal-link').value.trim(),
+    image_url:   document.getElementById('modal-image-url').value.trim(),
   };
   setBtnLoading('modal-save-btn', true, 'Save Project');
   try {

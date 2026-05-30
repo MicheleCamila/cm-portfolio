@@ -3,6 +3,7 @@
   "builds": [
     { "src": "api/chat.js", "use": "@vercel/node" },
     { "src": "api/data.js", "use": "@vercel/node" },
+    { "src": "api/upload.js", "use": "@vercel/node" },
 
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "dashboard.html", "use": "@vercel/static" },
@@ -15,6 +16,7 @@
   "routes": [
     { "src": "/api/chat", "dest": "/api/chat.js" },
     { "src": "/api/data", "dest": "/api/data.js" },
+    { "src": "/api/upload", "dest": "/api/upload.js" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
